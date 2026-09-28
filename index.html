@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUN — Tharaka University Advertising Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">TUN</span><div><strong>Tharaka Unit</strong><small>University Advertising Hub</small></div></div>
+  <nav>
+    <a href="#home">Home</a><a href="#advertise">Advertise</a><a href="#inquiry">Find Anything</a><a href="#comments">Community</a>
+  </nav>
+  <button class="btn btn-outline" onclick="openModal('signinModal')">Sign in</button>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">THARAKA UNIVERSITY • LOCAL MARKETPLACE</span>
+    <h1>Find it. Advertise it.<br><span>Connect around TUN.</span></h1>
+    <p>TUN brings students, businesses and service providers around Tharaka University together in one simple advertising hub.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="document.querySelector('#advertise').scrollIntoView({behavior:'smooth'})">Advertise your service</button>
+      <button class="btn btn-light" onclick="document.querySelector('#inquiry').scrollIntoView({behavior:'smooth'})">I’m looking for something</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-stat"><strong>199</strong><span>KSh / month</span></div>
+    <h3>One subscription. Unlimited opportunities.</h3>
+    <p>Open an account for free, then subscribe to post your products or services.</p>
+    <button class="btn btn-dark" onclick="openModal('signinModal')">Create free account</button>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="section-heading"><div><span class="eyebrow">WHAT'S AROUND?</span><h2>Browse categories</h2></div><span class="muted">Tap a category to explore</span></div>
+  <div class="category-grid">
+    <button onclick="filterAds('Rooms')">🏠<span>Vacant Rooms</span></button>
+    <button onclick="filterAds('Gas')">🔥<span>Gas Refills</span></button>
+    <button onclick="filterAds('Beddings')">🛏️<span>Beddings</span></button>
+    <button onclick="filterAds('Kitchen')">🍳<span>Kitchen Utensils</span></button>
+    <button onclick="filterAds('Toiletries')">🧴<span>Toiletries</span></button>
+    <button onclick="filterAds('Fashion')">👟<span>Clothes & Shoes</span></button>
+    <button onclick="filterAds('Hotel')">🍽️<span>Hotels & Food</span></button>
+    <button onclick="filterAds('Cyber')">💻<span>Cyber Services</span></button>
+    <button onclick="filterAds('Shop')">🛒<span>Shopping Kiosks</span></button>
+    <button onclick="filterAds('Entertainment')">🎉<span>Entertainment</span></button>
+    <button onclick="filterAds('Education')">📚<span>Educational Services</span></button>
+    <button onclick="filterAds('Politics')">📢<span>Campus Politics</span></button>
+  </div>
+</section>
+
+<section id="advertise" class="section">
+  <div class="section-heading"><div><span class="eyebrow">ADVERTISE</span><h2>Promote what you offer</h2></div><span class="price-tag">KSh 199/month</span></div>
+  <div class="ad-layout">
+    <div class="panel">
+      <h3>Post an advertisement</h3>
+      <p class="muted">Create an account for free. A premium subscription is required before your ad becomes public.</p>
+      <form id="adForm">
+        <label>Business / service name<input required placeholder="e.g. Brian's Bedsitters"></label>
+        <label>Category<select required><option value="">Choose category</option><option>Rooms</option><option>Gas</option><option>Beddings</option><option>Kitchen</option><option>Toiletries</option><option>Fashion</option><option>Hotel</option><option>Cyber</option><option>Shop</option><option>Entertainment</option><option>Education</option><option>Politics</option></select></label>
+        <label>Description<textarea required placeholder="What are you offering?"></textarea></label>
+        <div class="two"><label>Contact<input required placeholder="Phone / WhatsApp"></label><label>Location<input required placeholder="Around Tharaka University"></label></div>
+        <button class="btn btn-primary" type="submit">Continue to subscription — KSh 199</button>
+      </form>
+    </div>
+    <div class="premium-card">
+      <span class="premium-icon">✦</span><h3>TUN Premium</h3>
+      <div class="big-price">KSh 199 <small>/ month</small></div>
+      <ul><li>Post your products & services</li><li>Reach people around campus</li><li>Receive inquiries</li><li>Build visibility in the TUN community</li></ul>
+      <button class="btn btn-dark" onclick="openModal('subscriptionModal')">View subscription</button>
+    </div>
+  </div>
+</section>
+
+<section id="inquiry" class="section alt">
+  <div class="section-heading"><div><span class="eyebrow">INQUIRY SIDE</span><h2>What are you looking for?</h2></div></div>
+  <div class="search-box"><input id="searchInput" oninput="searchAds()" placeholder="Search rooms, gas, food, shoes, cyber services..."><button class="btn btn-dark" onclick="searchAds()">Search</button></div>
+  <div id="adGrid" class="ad-grid"></div>
+</section>
+
+<section id="comments" class="section">
+  <div class="section-heading"><div><span class="eyebrow">COMMUNITY</span><h2>Comments & inquiries</h2></div></div>
+  <div class="comment-layout">
+    <div class="panel">
+      <h3>Recent community comments</h3>
+      <div id="commentsList" class="comments"></div>
+      <form id="commentForm" class="comment-form">
+        <input id="commentName" required placeholder="Your name">
+        <textarea id="commentText" required placeholder="Leave a comment or inquiry..."></textarea>
+        <button class="btn btn-primary">Post comment</button>
+      </form>
+    </div>
+    <div class="rules">
+      <h3>TUN community rules</h3>
+      <p>Keep advertisements truthful and respectful. Do not post scams, abusive content or misleading offers.</p>
+      <p>Comments should help buyers and sellers communicate clearly.</p>
+      <p>For safety, verify important details before sending money or meeting someone.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div><strong>TUN — Tharaka Unit</strong><p>Connecting the Tharaka University community.</p></div><div><span>Advertise • Discover • Connect</span></div></footer>
+
+<div class="modal" id="signinModal"><div class="modal-card"><button class="close" onclick="closeModal('signinModal')">×</button><h2>Join TUN</h2><p class="muted">Registration is free. Posting requires the KSh 199/month premium plan.</p><form onsubmit="event.preventDefault(); closeModal('signinModal'); alert('Demo account created.');"><input required placeholder="Full name"><input required type="email" placeholder="Email"><input required type="tel" placeholder="Phone number"><input required type="password" placeholder="Create password"><button class="btn btn-primary">Create account</button></form></div></div>
+<div class="modal" id="subscriptionModal"><div class="modal-card"><button class="close" onclick="closeModal('subscriptionModal')">×</button><h2>TUN Premium</h2><p class="big-price">KSh 199 <small>/ month</small></p><p>Demo checkout: payment integration can be connected to M-Pesa before launch.</p><button class="btn btn-primary" onclick="alert('Payment gateway placeholder — connect M-Pesa here.');closeModal('subscriptionModal')">Proceed to payment</button></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
